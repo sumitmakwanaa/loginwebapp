@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content%}
+<div class="container p-3 mb-2 bg-light text-dark" style="margin-top: 50px; ">
+    <div class="container" style="width: 32%;">
+        <h1 class="display-7 fw-bold lh-1 mb-3 mt-lg-3 text-center">Create your account</h1>
+    </div>
+    <div class="container">
+        <div class="container-fluid" style="width: 32%; margin-top: 42px;">
+            <form method="POST" action="insertdata">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Create username" name="username">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Create password" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirm password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Condirm password" name="password">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required name="check">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <small class="display-7 fw-bold lh-1 mb-3 mt-lg-3 text-center"> Already have an account?<a href="{{url_for('login')}}"> Login</a></small>  
+        </div>
+    </div>
+</div>
+{% endblock %}
