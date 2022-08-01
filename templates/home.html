@@ -1,7 +1,12 @@
 {% extends "layout.html" %}
 {% block content%}
 
-
+<h1 class="display-7 fw-bold lh-1 mb-3 mt-lg-3 text-center">
+<div>{{session.email}}</div>
+<div>{% if msg %}
+ {{ msg }}!
+{% endif %}</div>
+</h1>
 
 <div class="b-example-divider"></div>
 

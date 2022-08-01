@@ -12,6 +12,10 @@ def home():
 @app.route('/register')
 def register():
     return render_template('register.html', title = 'Register')
+
+@app.route('/login')
+def login():
+    return render_template('login.html', title = 'Login')
     
 @app.route('/insertdata', methods=['POST'])
 def insertdata():
@@ -31,9 +35,26 @@ def insertdata():
             msg = "Register failed"
             return render_template('register.html', title = 'Register', msg=msg)
 
-@app.route('/login')
-def login():
-    return render_template('login.html', title = 'Login')
+@app.route('/validatedata', methods=['POST'])
+def validatedata():
+    if (request.method == 'POST'):
+        email = request.form["email"]
+        password = request.form["password"]
+        conn = sqlite3.connect('site.db')
+        c = conn.cursor()
+        c.execute("SELECT * FROM users WHERE email = '"+email+"' and password = '"+password+"'")
+        i = c.fetchone()
+        if i and email == i[1] and password == i[2]:
+            session["Loged in"] = True
+            session["email"] = email
+            msg = "Login successfully"
+            return render_template('home.html',title = 'Home', msg = msg)
+        else:
+            msg = "Couldn't login'"
+            return render_template('login.html', title = 'Login',msg=msg)  
+    else:
+        return "Please enter valid username and password" 
+
 
 if __name__ == '__main__':
     app.run(debug = True)
