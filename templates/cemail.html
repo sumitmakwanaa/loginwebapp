@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content%}
+<div class="container p-3 mb-2 bg-light text-dark" style="margin-top: 50px; height: 560px; ">
+    <div class="container" style="width: 32%;">
+        <h1 class="display-7 fw-bold lh-1 mb-3 mt-lg-3 text-center">Confirm your email</h1>
+    </div>
+    <div class="container" style="width: 32%; margin-top: 42px;">
+        <form method = "POST" action="/confirm_email">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email your address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <button type="submit" class="btn btn-primary"> Get confirmation link</button>
+        </form>
+        <small class="display-7 fw-bold lh-1 mb-3 mt-lg-3 text-center"> Not have an acount create one? <a href="{{url_for('register')}}">Sign in</a></small>  
+    </div>
+</div>
+{% endblock %}
